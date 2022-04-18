@@ -15,12 +15,12 @@ class ViewController: UIViewController {
         
         
         let model = GXCalendarMonthModel(year: 2022, month: 1)
-        for item in model.dayList {
-            let week = item.components.weekday ?? 0
-            let string = GXCalendar.gx_stringDate(item.date, format: "yyyy-MM-dd")
-            
-            NSLog("\(string): week: \(week)")
-        }
+//        for item in model.dayList {
+//            let week = item.components.weekday ?? 0
+//            let string = GXCalendar.gx_stringDate(item.date, format: "yyyy-MM-dd")
+//
+//            NSLog("\(string): week: \(week)")
+//        }
         
 //        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 100, width: 300, height: 400))
 //        self.view.addSubview(datePicker)

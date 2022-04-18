@@ -84,6 +84,8 @@ public class GXCalendarDayCell: UICollectionViewCell {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.backgroundColor = .clear
         self.contentView.addSubview(self.dayLabel)
         self.contentView.addSubview(self.chDayLabel)
     }
