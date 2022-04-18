@@ -94,6 +94,11 @@ public extension GXCalendar {
         
         return gx_zodiacs[zodiacindex]
     }
+    class func gx_chineseZodiac(components: DateComponents) -> String {
+        let year: Int = components.year ?? 1
+        
+        return self.gx_chineseZodiac(year: year)
+    }
     
     /// 根据农历年获取[天干地支]
     /// - Parameter year: 年
@@ -106,6 +111,11 @@ public extension GXCalendar {
         
         return heavenlystem + earthlybranche
     }
+    class func gx_chineseEra(components: DateComponents) -> String {
+        let year: Int = components.year ?? 1
+        
+        return self.gx_chineseEra(year: year)
+    }
     
     /// 根据农历月日获取[农历日]
     /// - Parameter month: 月
@@ -116,6 +126,12 @@ public extension GXCalendar {
 
         return gx_day[day - 1]
     }
+    class func gx_chineseDay(components: DateComponents) -> String {
+        let day = components.day ?? 1
+        let month = components.month ?? 1
+
+        return self.gx_chineseDay(month: month, day: day)
+    }
     
     /// 根据周索引获取周几
     /// - Parameter week: 周
@@ -123,8 +139,29 @@ public extension GXCalendar {
     class func gx_weekDay(week: Int) -> String {
         return gx_week[week - 1]
     }
-
+    class func gx_weekDay(components: DateComponents) -> String {
+        let week = components.weekday ?? 1
+        
+        return self.gx_weekDay(week: week)
+    }
     
+    /// 根据日期获取日期显示
+    /// - Parameter day: 日期
+    /// - Returns: 显示日期String
+    class func gx_day(day: Int) -> String {
+        return String(format: "%02d", day)
+    }
+    class func gx_day(components: DateComponents) -> String {
+        let day = components.day ?? 1
+        
+        return self.gx_day(day: day)
+    }
+    
+    /// 根据日期与指定格式获取字符串
+    /// - Parameters:
+    ///   - date: 日期
+    ///   - format: 日期格式
+    /// - Returns: 指定显示日期String
     class func gx_stringDate(_ date: Date, format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format

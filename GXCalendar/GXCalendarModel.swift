@@ -25,7 +25,6 @@ public class GXCalendarMonthModel: NSObject {
     
     public lazy var dayList: [GXCalendarDayModel] = {
         var list: [GXCalendarDayModel] = []
-        
         // 添加本月日期
         let numberOfDays = GXCalendar.gx_numberOfDaysInMonth(date: self.date)
         for index in 0..<numberOfDays {
@@ -59,13 +58,18 @@ public class GXCalendarMonthModel: NSObject {
                 }
             }
         }
-        
         return list
     }()
     
     required init(year: Int, month: Int) {
         self.year = year
         self.month = month
+    }
+    
+    required init(date: Date) {
+        let date = GXCalendar.gx_dateComponents(date: date)
+        self.year = date.year ?? 1970
+        self.month = date.month ?? 1
     }
 }
 

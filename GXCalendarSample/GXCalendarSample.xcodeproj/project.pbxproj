@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		96017C592807E5960089CE04 /* GXCalendar+Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96017C582807E5960089CE04 /* GXCalendar+Private.swift */; };
+		96017C592807E5960089CE04 /* GXCalendar+GXAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96017C582807E5960089CE04 /* GXCalendar+GXAdd.swift */; };
 		966A8C282806E27A002B09C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A8C272806E27A002B09C3 /* AppDelegate.swift */; };
 		966A8C2A2806E27A002B09C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A8C292806E27A002B09C3 /* SceneDelegate.swift */; };
 		966A8C2C2806E27A002B09C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A8C2B2806E27A002B09C3 /* ViewController.swift */; };
@@ -19,6 +19,8 @@
 		966A8C4B2806E27E002B09C3 /* GXCalendarSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A8C4A2806E27E002B09C3 /* GXCalendarSampleUITestsLaunchTests.swift */; };
 		966A8C5B2806E3F7002B09C3 /* GXCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A8C5A2806E3F7002B09C3 /* GXCalendar.swift */; };
 		96BF08F3280995E900753C01 /* GXCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BF08F2280995E900753C01 /* GXCalendarModel.swift */; };
+		96BF08F5280B089A00753C01 /* GXCalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BF08F4280B089A00753C01 /* GXCalendarCollectionView.swift */; };
+		96BF08F9280D157800753C01 /* GXCalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BF08F8280D157800753C01 /* GXCalendarDayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		96017C582807E5960089CE04 /* GXCalendar+Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GXCalendar+Private.swift"; sourceTree = "<group>"; };
+		96017C582807E5960089CE04 /* GXCalendar+GXAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GXCalendar+GXAdd.swift"; sourceTree = "<group>"; };
 		966A8C242806E27A002B09C3 /* GXCalendarSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GXCalendarSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966A8C272806E27A002B09C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966A8C292806E27A002B09C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		966A8C4A2806E27E002B09C3 /* GXCalendarSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCalendarSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		966A8C5A2806E3F7002B09C3 /* GXCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCalendar.swift; sourceTree = "<group>"; };
 		96BF08F2280995E900753C01 /* GXCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCalendarModel.swift; sourceTree = "<group>"; };
+		96BF08F4280B089A00753C01 /* GXCalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCalendarCollectionView.swift; sourceTree = "<group>"; };
+		96BF08F8280D157800753C01 /* GXCalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXCalendarDayCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				966A8C5A2806E3F7002B09C3 /* GXCalendar.swift */,
-				96017C582807E5960089CE04 /* GXCalendar+Private.swift */,
+				96017C582807E5960089CE04 /* GXCalendar+GXAdd.swift */,
 				96BF08F2280995E900753C01 /* GXCalendarModel.swift */,
+				96BF08F8280D157800753C01 /* GXCalendarDayCell.swift */,
+				96BF08F4280B089A00753C01 /* GXCalendarCollectionView.swift */,
 			);
 			name = GXCalendar;
 			path = ../../GXCalendar;
@@ -277,11 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				966A8C5B2806E3F7002B09C3 /* GXCalendar.swift in Sources */,
+				96BF08F9280D157800753C01 /* GXCalendarDayCell.swift in Sources */,
 				966A8C2C2806E27A002B09C3 /* ViewController.swift in Sources */,
 				96BF08F3280995E900753C01 /* GXCalendarModel.swift in Sources */,
 				966A8C282806E27A002B09C3 /* AppDelegate.swift in Sources */,
 				966A8C2A2806E27A002B09C3 /* SceneDelegate.swift in Sources */,
-				96017C592807E5960089CE04 /* GXCalendar+Private.swift in Sources */,
+				96BF08F5280B089A00753C01 /* GXCalendarCollectionView.swift in Sources */,
+				96017C592807E5960089CE04 /* GXCalendar+GXAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

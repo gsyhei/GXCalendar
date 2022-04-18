@@ -21,6 +21,15 @@ class ViewController: UIViewController {
             
             NSLog("\(string): week: \(week)")
         }
+        
+//        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 100, width: 300, height: 400))
+//        self.view.addSubview(datePicker)
+        
+        let rect = CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 400)
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = GXCalendarCollectionView(frame: rect, collectionViewLayout: layout)
+        collectionView.model = model
+        self.view.addSubview(collectionView)
     }
 
 
