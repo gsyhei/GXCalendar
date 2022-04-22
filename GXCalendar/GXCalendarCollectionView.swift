@@ -36,6 +36,8 @@ public class GXCalendarCollectionView: UICollectionView {
         switch pan.state {
         case .began:
             self.handlePanBegin(point: point)
+        case .ended:
+            self.handlePanEnded(point: point)
         case .changed:
             self.handlePanChanged(point: point)
         default: break
@@ -48,8 +50,15 @@ public class GXCalendarCollectionView: UICollectionView {
         self.startSelected = cell.isSelected
     }
     
+    func handlePanEnded(point: CGPoint) {
+        self.startSelected = false
+    }
+    
     func handlePanChanged(point: CGPoint) {
         guard let indexPath = self.indexPathForItem(at: point) else { return }
+        guard let model = self.model?.dayList[indexPath.row] else { return }
+        guard !model.isMonthOut else { return }
+        
         if self.startSelected {
             self.deselectItem(at: indexPath, animated: true)
         }
@@ -81,14 +90,21 @@ extension GXCalendarCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let rowCount: Int = 7
         let column = (self.model?.dayList.count ?? 0) / rowCount
-        let width = floor(collectionView.frame.width / CGFloat(rowCount))
-        let height = floor(collectionView.frame.height / CGFloat(column))
+        let width = Int(collectionView.frame.width) / rowCount
+        let height = Int(collectionView.frame.height) / column
         
         return CGSize(width: width, height: height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
+        let rowCount: Int = 7
+        let column = (self.model?.dayList.count ?? 0) / rowCount
+        let width = Int(collectionView.frame.width) / rowCount
+        let height = Int(collectionView.frame.height) / column
+        let left = collectionView.frame.width - CGFloat(width * rowCount)
+        let right = collectionView.frame.height - CGFloat(height * column)
+        
+        return .init(top: right * 0.5, left: left * 0.5, bottom: right * 0.5, right: left * 0.5)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

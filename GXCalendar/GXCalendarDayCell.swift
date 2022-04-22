@@ -8,26 +8,10 @@
 import UIKit
 
 public class GXCalendarDayCell: UICollectionViewCell {
-    public enum SelectedType {
-        case begin
-        case mid
-        case end
-    }
+    
     public override var isSelected: Bool {
         didSet {
-            guard !(self.model?.isMonthOut ?? false) else {
-                return
-            }
-            if self.isSelected {
-                self.dayLabel.textColor = .white
-                self.chDayLabel.textColor = .white
-                self.backgroundColor = .blue
-            }
-            else {
-                self.dayLabel.textColor = .black
-                self.chDayLabel.textColor = .darkGray
-                self.backgroundColor = .clear
-            }
+            self.setSelectedCell()
         }
     }
     public var model: GXCalendarDayModel? {
@@ -46,11 +30,7 @@ public class GXCalendarDayCell: UICollectionViewCell {
             }
         }
     }
-    public var selectedType: SelectedType? {
-        didSet {
-            self.setNeedsDisplay()
-        }
-    }
+
     public lazy var dayLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textAlignment = .center
@@ -64,7 +44,7 @@ public class GXCalendarDayCell: UICollectionViewCell {
         let label = UILabel(frame: CGRect.zero)
         label.textAlignment = .center
         label.textColor = .blue
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 12)
         
         return label
     }()
@@ -73,12 +53,12 @@ public class GXCalendarDayCell: UICollectionViewCell {
         super.layoutSubviews()
         
         var rect = self.bounds
-        rect.origin.y = self.bounds.height/2 - 24
-        rect.size.height = 24
+        rect.origin.y = self.bounds.height/2 - 20
+        rect.size.height = 20
         self.dayLabel.frame = rect
         
         rect.origin.y = self.bounds.height/2
-        rect.size.height = 20
+        rect.size.height = 16
         self.chDayLabel.frame = rect
     }
     
@@ -94,4 +74,18 @@ public class GXCalendarDayCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setSelectedCell() {
+        guard !(self.model?.isMonthOut ?? false) else { return }
+        
+        if self.isSelected {
+            self.dayLabel.textColor = .white
+            self.chDayLabel.textColor = .white
+            self.backgroundColor = .blue
+        }
+        else {
+            self.dayLabel.textColor = .black
+            self.chDayLabel.textColor = .darkGray
+            self.backgroundColor = .clear
+        }
+    }
 }
