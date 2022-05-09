@@ -17,7 +17,7 @@ public class GXCalendarDayCell: UICollectionViewCell {
     public var model: GXCalendarDayModel? {
         didSet {
             if let letModel = self.model {
-                if letModel.isMonthOut {
+                if letModel.isCurrentMonthOut {
                     self.dayLabel.textColor = .lightGray
                     self.chDayLabel.textColor = .lightGray
                 }
@@ -75,7 +75,7 @@ public class GXCalendarDayCell: UICollectionViewCell {
     }
     
     func setSelectedCell() {
-        guard !(self.model?.isMonthOut ?? false) else { return }
+        guard !(self.model?.isCurrentMonthOut ?? false) else { return }
         
         if self.isSelected {
             self.dayLabel.textColor = .white

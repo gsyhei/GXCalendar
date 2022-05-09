@@ -57,7 +57,7 @@ public class GXCalendarCollectionView: UICollectionView {
     func handlePanChanged(point: CGPoint) {
         guard let indexPath = self.indexPathForItem(at: point) else { return }
         guard let model = self.model?.dayList[indexPath.row] else { return }
-        guard !model.isMonthOut else { return }
+        guard !model.isCurrentMonthOut else { return }
         
         if self.startSelected {
             self.deselectItem(at: indexPath, animated: true)
@@ -120,7 +120,7 @@ extension GXCalendarCollectionView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let model = self.model?.dayList[indexPath.row]
         
-        return !(model?.isMonthOut ?? false)
+        return !(model?.isCurrentMonthOut ?? false)
     }
 }
 

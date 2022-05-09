@@ -30,7 +30,7 @@ public class GXCalendarMonthModel: NSObject {
         for index in 0..<numberOfDays {
             let reDate = Calendar.current.date(byAdding: .day, value: index, to: self.date)
             if let letReDate = reDate {
-                let model = GXCalendarDayModel(date: letReDate, isMonthOut: false)
+                let model = GXCalendarDayModel(date: letReDate, isCurrentMonthOut: false)
                 list.append(model)
             }
         }
@@ -41,7 +41,7 @@ public class GXCalendarMonthModel: NSObject {
             for index in (1..<firstDayWeek) {
                 let reDate = Calendar.current.date(byAdding: .day, value: -index, to: firstDay.date)
                 if let letReDate = reDate {
-                    let model = GXCalendarDayModel(date: letReDate, isMonthOut: true)
+                    let model = GXCalendarDayModel(date: letReDate, isCurrentMonthOut: true)
                     list.insert(model, at: 0)
                 }
             }
@@ -53,7 +53,7 @@ public class GXCalendarMonthModel: NSObject {
             for index in 1...(7 - lastDayWeek) {
                 let reDate = Calendar.current.date(byAdding: .day, value: index, to: lastDay.date)
                 if let letReDate = reDate {
-                    let model = GXCalendarDayModel(date: letReDate, isMonthOut: true)
+                    let model = GXCalendarDayModel(date: letReDate, isCurrentMonthOut: true)
                     list.append(model)
                 }
             }
@@ -75,7 +75,7 @@ public class GXCalendarMonthModel: NSObject {
 
 public class GXCalendarDayModel: NSObject {
     public var date: Date
-    public var isMonthOut: Bool
+    public var isCurrentMonthOut: Bool
 
     public lazy var components: DateComponents = {
         return GXCalendar.gx_dateComponents(date: self.date)
@@ -85,8 +85,8 @@ public class GXCalendarDayModel: NSObject {
         return GXCalendar.gx_chineseDateComponents(date: self.date)
     }()
     
-    required init(date: Date, isMonthOut: Bool) {
+    required init(date: Date, isCurrentMonthOut: Bool) {
         self.date = date
-        self.isMonthOut = isMonthOut
+        self.isCurrentMonthOut = isCurrentMonthOut
     }
 }
